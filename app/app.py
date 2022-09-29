@@ -22,7 +22,6 @@ def hbLogic():
     proceedOverride = False
     proceed = False
     data = {}
-    logger('I', "Checking for HB file...")
     if not os.path.exists('heartbeat.json'):  # New Container
         logger('I', "No heartbeat file.  Will run capacity check")
         proceedOverride = True
