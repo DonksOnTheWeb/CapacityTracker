@@ -106,3 +106,4 @@ def calculateAverageImplied(data, howFarBack):
         results[mfc] = {'Ambient': ambient, 'Chilled': chilled, 'Frozen': frozen}
 
     return results
+

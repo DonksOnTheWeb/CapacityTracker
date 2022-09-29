@@ -19,3 +19,4 @@ def readFromGeneric(sheet_name, sheet_id, cols):
     values = result.get('values', [])
 
     return values
+
