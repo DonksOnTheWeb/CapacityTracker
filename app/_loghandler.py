@@ -7,4 +7,3 @@ def logger(lvl, msg):
         print(timestamp + ' : WARN : ' + msg)
     if lvl == 'I':
         print(timestamp + ' : INFO : ' + msg)
-
