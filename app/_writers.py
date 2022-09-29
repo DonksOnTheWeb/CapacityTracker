@@ -17,14 +17,14 @@ def writeAverages(jsonData, tab):
     clearRange = tab + "!A:D"
     headersRange = tab + "!A1:D1"
     tsRange = tab + "!F1:G1"
-    values = [
-        ['Location', 'Ambient', 'Chilled', 'Frozen'],
-    ]
 
     # First clear existing
     sheet.values().clear(spreadsheetId=spreadsheet_id, range=clearRange).execute()
 
     # Now the headers
+    values = [
+        ['Location', 'Ambient', 'Chilled', 'Frozen'],
+    ]
     data = {'values': values}
     sheet.values().update(spreadsheetId=spreadsheet_id, body=data, range=headersRange,
                           valueInputOption='USER_ENTERED').execute()

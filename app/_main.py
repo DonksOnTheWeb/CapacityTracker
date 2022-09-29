@@ -1,6 +1,7 @@
 from _readers import readFromGeneric
 import datetime
 from datetime import timedelta
+import json
 
 from _writers import writeAverages
 from _writers import writeHistoric
@@ -11,7 +12,7 @@ def mainLoop():
 
     data = readAll()
     averages = calculateAverageImplied(data, howFarBack)
-    writeAverages(averages, "21 Day Weighted Average")
+    writeAverages(averages, str(howFarBack) + " Day Weighted Average")
     writeHistoric(data, howFarBack, 'Ambient')
     writeHistoric(data, howFarBack, 'Chilled')
     writeHistoric(data, howFarBack, 'Frozen')
@@ -21,6 +22,7 @@ def readAll():
     dataLump = readFromGeneric('Coefficient Dump', '11-DCc6jBqsNfSMFqzxSvN7RFxk2R-EVpzAh2kLIMcyM', '!B:L')
     dataLump = dataLump[2:]
 
+    # 12th August 2022 is the date that Andrea changed the calculation and reset all the coefficients
     startFrom = datetime.datetime.strptime('2022-08-12', '%Y-%m-%d')
 
     data = {}
@@ -50,6 +52,7 @@ def readAll():
                             bookends[mfc]['Latest'] = dte
                 else:
                     bookends[mfc] = {'Earliest': dte, 'Latest': dte}
+
     return {'Data': data, 'Bookends': bookends}
 
 
